@@ -1,16 +1,14 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-
+import { Provider } from "react-redux";
+import store from "./store";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
-import ThemeContext from "./ThemeContext";
 
 const App = () => {
-  const themeHook = useState("darkblue");
-
   return (
-    <ThemeContext.Provider value={themeHook}>
+    <Provider store={store}>
       <div>
         <Router>
           <header>
@@ -28,7 +26,7 @@ const App = () => {
           </Switch>
         </Router>
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 
